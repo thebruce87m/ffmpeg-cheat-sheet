@@ -1,5 +1,30 @@
 # ffmpeg-cheat-sheet
 
+# Record from a hikvision NVR in chunks:
+
+```bash
+ffmpeg -y \
+-rtsp_transport tcp \
+-i rtsp://username:password@192.168.1.30:554/Streaming/tracks/201?starttime=20231003T075500Z \
+-ss 00:00:0 \
+-t 00:01:00 \
+-acodec copy \
+-vcodec copy \
+-f segment \
+-segment_time 10 \
+./output/xxx-%03d.mkv
+```
+
+Will record in chunks as follows:
+
+```bash
+xxx-000.mkv
+xxx-001.mkv
+xxx-002.mkv
+xxx-003.mkv
+xxx-004.mkv
+```
+
 
 # Make a mosaic from 4 videos
 
