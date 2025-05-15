@@ -1,5 +1,30 @@
 # ffmpeg-cheat-sheet
 
+Whatsapp compatible conversion.
+
+* `-ss` is start time, e.g. 1 minute
+* `-t` is clip length, e.g. 30 seconds
+* `-vf "scale=720:-2"` will scale to 720 width while keeping aspect ratio
+
+```bash
+ffmpeg \
+\
+-ss 00:01:00 \
+-t 00:00:30 \
+\
+-i original.mp4 \
+\
+-vf "scale=720:-2" \
+\
+-c:v libx264 \
+-profile:v baseline \
+-level 3.0 \
+-pix_fmt yuv420p \
+\
+original_wa.mp4
+```
+
+
 # Record from a hikvision NVR in chunks:
 
 ```bash
